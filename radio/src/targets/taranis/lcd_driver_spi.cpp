@@ -21,7 +21,7 @@
 #include "opentx.h"
 
 #if defined(PCBJUMPERT12)
- #define LCD_CONTRAST_OFFSET            -70 //-20 too dark; //65+24=good
+ #define LCD_CONTRAST_OFFSET            -70
 #else
  #define LCD_CONTRAST_OFFSET            -10
 #endif
