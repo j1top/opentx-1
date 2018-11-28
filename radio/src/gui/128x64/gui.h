@@ -175,7 +175,7 @@ void title(const char * s);
 #if defined(PCBX7)
 #define MENU_CHECK(tab, menu, lines_count) \
   check(event, menu, tab, DIM(tab), mstate_tab, DIM(mstate_tab)-1, lines_count)
-elif defined(PCBJUMPERT12)
+#elif defined(PCBJUMPERT12)
 #define MENU_CHECK(tab, menu, lines_count) \
   check(event, menu, tab, DIM(tab), mstate_tab, DIM(mstate_tab)-1, lines_count)
 #else
