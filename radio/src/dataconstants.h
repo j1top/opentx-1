@@ -219,6 +219,8 @@ enum BeeperMode {
   #define TRAINER_MODE_MAX()             TRAINER_MODE_SLAVE_BLUETOOTH
 #elif defined(PCBX7) || defined(PCBXLITE)
   #define TRAINER_MODE_MAX()             TRAINER_MODE_MASTER_CPPM_EXTERNAL_MODULE
+#elif defined(PCBJUMPERT12)
+  #define TRAINER_MODE_MAX()             TRAINER_MODE_MASTER_CPPM_EXTERNAL_MODULE
 #else
   #define TRAINER_MODE_MAX()             HAS_WIRELESS_TRAINER_HARDWARE() ? TRAINER_MODE_MASTER_BATTERY_COMPARTMENT : TRAINER_MODE_MASTER_CPPM_EXTERNAL_MODULE
 #endif
@@ -376,12 +378,22 @@ enum SwitchSources {
   SWSRC_SE1,
   SWSRC_SE2,
 #endif
+#if !defined(PCBJUMPERT12) && !defined(PCBXLITE)
+  SWSRC_SE0,
+  SWSRC_SE1,
+  SWSRC_SE2,
+#endif
 #if !defined(PCBXLITE)
   SWSRC_SF0,
   SWSRC_SF1,
   SWSRC_SF2,
 #endif
 #if !defined(PCBX7) && !defined(PCBXLITE)
+  SWSRC_SG0,
+  SWSRC_SG1,
+  SWSRC_SG2,
+#endif
+#if !defined(PCBJUMPERT12) && !defined(PCBXLITE)
   SWSRC_SG0,
   SWSRC_SG1,
   SWSRC_SG2,
@@ -560,6 +572,10 @@ enum MixSources {
   MIXSRC_POT1 = MIXSRC_FIRST_POT,       LUA_EXPORT("s1", "Potentiometer 1")
   MIXSRC_POT2,                          LUA_EXPORT("s2", "Potentiometer 2")
   MIXSRC_LAST_POT = MIXSRC_POT2,
+#elif defined(PCBJUMPERT12)
+  MIXSRC_POT1 = MIXSRC_FIRST_POT,       LUA_EXPORT("s1", "Potentiometer 1")
+  MIXSRC_POT2,                          LUA_EXPORT("s2", "Potentiometer 2")
+  MIXSRC_LAST_POT = MIXSRC_POT2,
 #elif defined(PCBTARANIS)
   MIXSRC_POT1 = MIXSRC_FIRST_POT,       LUA_EXPORT("s1", "Potentiometer 1")
   MIXSRC_POT2,                          LUA_EXPORT("s2", "Potentiometer 2")
@@ -621,8 +637,14 @@ enum MixSources {
 #if !defined(PCBX7)
   MIXSRC_SE,                        LUA_EXPORT("se", "Switch E")
 #endif
+#if !defined(PCBJUMPERT12)
+  MIXSRC_SE,                        LUA_EXPORT("se", "Switch E")
+#endif
   MIXSRC_SF,                        LUA_EXPORT("sf", "Switch F")
 #if !defined(PCBX7)
+  MIXSRC_SG,                        LUA_EXPORT("sg", "Switch G")
+#endif
+#if !defined(PCBJUMPERT12)
   MIXSRC_SG,                        LUA_EXPORT("sg", "Switch G")
 #endif
   MIXSRC_SH,                        LUA_EXPORT("sh", "Switch H")

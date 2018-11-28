@@ -38,4 +38,9 @@ void menuRadioSpecialFunctions(event_t event)
     menuHorizontalPosition = -1;
   }
 #endif
+#if defined(PCBJUMPERT12)
+  if (!CFN_SWITCH(cfn) && menuHorizontalPosition == 0 && s_editMode <= 0) {
+    menuHorizontalPosition = -1;
+  }
+#endif
 }
