@@ -373,17 +373,12 @@ enum SwitchSources {
   SWSRC_SD0,
   SWSRC_SD1,
   SWSRC_SD2,
-#if !defined(PCBX7) && !defined(PCBXLITE)
+#if !defined(PCBX7) && !defined(PCBXLITE) && !defined(PCBJUMPERT12)
   SWSRC_SE0,
   SWSRC_SE1,
   SWSRC_SE2,
 #endif
-#if !defined(PCBJUMPERT12) && !defined(PCBXLITE)
-  SWSRC_SE0,
-  SWSRC_SE1,
-  SWSRC_SE2,
-#endif
-#if !defined(PCBXLITE)
+#if !defined(PCBXLITE) && !defined(PCBJUMPERT12)
   SWSRC_SF0,
   SWSRC_SF1,
   SWSRC_SF2,
@@ -393,11 +388,7 @@ enum SwitchSources {
   SWSRC_SG1,
   SWSRC_SG2,
 #endif
-#if !defined(PCBJUMPERT12) && !defined(PCBXLITE)
-  SWSRC_SG0,
-  SWSRC_SG1,
-  SWSRC_SG2,
-#endif
+
 #if !defined(PCBXLITE)
   SWSRC_SH0,
   SWSRC_SH1,
@@ -634,17 +625,13 @@ enum MixSources {
   MIXSRC_SB,                        LUA_EXPORT("sb", "Switch B")
   MIXSRC_SC,                        LUA_EXPORT("sc", "Switch C")
   MIXSRC_SD,                        LUA_EXPORT("sd", "Switch D")
-#if !defined(PCBX7)
+#if !defined(PCBX7) && !defined (PCBJUMPERT12)
   MIXSRC_SE,                        LUA_EXPORT("se", "Switch E")
 #endif
 #if !defined(PCBJUMPERT12)
-  MIXSRC_SE,                        LUA_EXPORT("se", "Switch E")
-#endif
   MIXSRC_SF,                        LUA_EXPORT("sf", "Switch F")
-#if !defined(PCBX7)
-  MIXSRC_SG,                        LUA_EXPORT("sg", "Switch G")
 #endif
-#if !defined(PCBJUMPERT12)
+#if !defined(PCBX7)
   MIXSRC_SG,                        LUA_EXPORT("sg", "Switch G")
 #endif
   MIXSRC_SH,                        LUA_EXPORT("sh", "Switch H")
