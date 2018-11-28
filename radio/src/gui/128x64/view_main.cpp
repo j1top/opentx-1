@@ -554,7 +554,7 @@ void menuMainView(event_t event)
   }
   else {
     // Timer2
-    drawTimerWithMode(87, 5*FH, 1);
+    drawTimerWithMode(125, 5*FH, 1);
   }
 
   // And ! in case of unexpected shutdown

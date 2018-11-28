@@ -839,10 +839,7 @@
 #endif
 
 // Serial Port
-#if defined(PCBX7) || defined(PCBXLITE)
-  #define SERIAL_RCC_AHB1Periph         0
-  #define SERIAL_RCC_APB1Periph         0
-#elif defined(PCBJUMPERT12) || defined(PCBXLITE)
+#if defined(PCBX7) || defined(PCBXLITE) || defined(PCBJUMPERT12)
   #define SERIAL_RCC_AHB1Periph         0
   #define SERIAL_RCC_APB1Periph         0
 #else
