@@ -245,6 +245,11 @@ enum EnumKeys
   KEY_UP,
   KEY_RIGHT,
   KEY_LEFT,
+#elif defined(PCBJUMPERT12)
+  KEY_DOWN,
+  KEY_UP,
+  KEY_RIGHT,
+  KEY_LEFT,
 #else
   KEY_PAGE,
   KEY_PLUS,
@@ -270,7 +275,7 @@ enum EnumKeys
   #define KEY_DOWN                      KEY_PLUS
   #define KEY_RIGHT                     KEY_PLUS
   #define KEY_LEFT                      KEY_MINUS
-#elif defined(PCBXLITE)
+#elif defined(PCBXLITE) || defined (PCBJUMPERT12)
   #define KEY_PLUS                      KEY_RIGHT
   #define KEY_MINUS                     KEY_LEFT
 #elif defined(PCBJUMPERT12)
@@ -304,7 +309,7 @@ enum EnumSwitches
   SW_SG,
   SW_SH
 };
-#define IS_3POS(x)                      ((x) != SW_SF && (x) != SW_SH)
+#define IS_3POS(x)                      ((x) != SW_SG && (x) != SW_SH)
 
 enum EnumSwitchesPositions
 {
@@ -399,11 +404,6 @@ uint32_t readTrims(void);
 #define ROTARY_ENCODER_NAVIGATION
 void checkRotaryEncoder(void);
 #endif
-#if defined(PCBJUMPERT12)
-// Rotary Encoder driver
-#define ROTARY_ENCODER_NAVIGATION
-void checkRotaryEncoder(void);
-#endif
 
 // WDT driver
 #define WDTO_500MS                      500
@@ -429,9 +429,7 @@ enum Analogs {
   POT_FIRST,
   POT1 = POT_FIRST,
   POT2,
-#if defined(PCBX7) || defined(PCBXLITE)
-  POT_LAST = POT2,
-#elif defined(PCBJUMPERT12)
+#if defined(PCBX7) || defined(PCBXLITE) || defined (PCBJUMPERT12)
   POT_LAST = POT2,
 #elif defined(PCBX9E)
   POT3,
@@ -686,7 +684,7 @@ void ledBlue(void);
 #define IS_LCD_RESET_NEEDED()           true
 #define LCD_CONTRAST_MIN                10
 #define LCD_CONTRAST_MAX                40
-#define LCD_CONTRAST_DEFAULT            30
+#define LCD_CONTRAST_DEFAULT            25
 #else
 #define LCD_W                           212
 #define LCD_H                           64

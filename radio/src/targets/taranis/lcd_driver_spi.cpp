@@ -21,7 +21,7 @@
 #include "opentx.h"
 
 #if defined(PCBJUMPERT12)
- #define LCD_CONTRAST_OFFSET            80
+ #define LCD_CONTRAST_OFFSET            -10
 #else
  #define LCD_CONTRAST_OFFSET            -10
 #endif
@@ -116,7 +116,7 @@ void lcdStart()
   lcdWriteCommand(0xa3); // Set bias=1/6
   lcdWriteCommand(0x22); // Set internal rb/ra=5.0
   lcdWriteCommand(0x2f); // All built-in power circuits on
-  lcdWriteCommand(0x85); // Set contrast
+  lcdWriteCommand(0x24); // Set contrast
   lcdWriteCommand(0x36); // Set Vop
   lcdWriteCommand(0xa6); // Set display mode
 #else
@@ -128,7 +128,7 @@ void lcdStart()
   lcdWriteCommand(0xa3); // Set bias=1/6
   lcdWriteCommand(0x22); // Set internal rb/ra=5.0
   lcdWriteCommand(0x2f); // All built-in power circuits on
-  lcdWriteCommand(0x81); // Set contrast
+  lcdWriteCommand(0x83); // Set contrast
   lcdWriteCommand(0x36); // Set Vop
   lcdWriteCommand(0xa6); // Set display mode
 #endif
@@ -142,11 +142,7 @@ void lcdStart()
   lcdWriteCommand(0xE9); // Set bias=1/10
   lcdWriteCommand(0x81); // Set Vop
 #if defined(BOOT)
-#if defined(PCBJUMPERT12)
-  lcdWriteCommand(LCD_CONTRAST_OFFSET+LCD_CONTRAST_DEFAULT);
-#else
   lcdWriteCommand(LCD_CONTRAST_OFFSET+LCD_CONTRAST_DEFAULT); 
-#endif
 #else
   lcdWriteCommand(LCD_CONTRAST_OFFSET+g_eeGeneral.contrast);
 #endif
