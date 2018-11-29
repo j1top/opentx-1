@@ -121,7 +121,7 @@ void editName(coord_t x, coord_t y, char * name, uint8_t size, event_t event, ui
 #endif
           
           if (attr & ZCHAR) {
-#if defined(PCBXLITE) || !defined(PCBTARANIS) || defined(PCBJUMPERT12)PCBXLITE
+#if defined(PCBTARANIS) && (!defined(PCBXLITE) || !defined(PCBJUMPERT12))
             if (v == 0) {
               s_editMode = 0;
               killEvents(event);
