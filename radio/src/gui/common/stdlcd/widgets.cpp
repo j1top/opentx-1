@@ -101,7 +101,7 @@ void editName(coord_t x, coord_t y, char * name, uint8_t size, event_t event, ui
             s_editMode = 0;
           break;
 
-#if defined(PCBXLITE) || !defined(PCBTARANIS)
+#if defined(PCBXLITE) || !defined(PCBTARANIS) || defined(PCBJUMPERT12)
         case EVT_KEY_BREAK(KEY_LEFT):
           if (cur>0) cur--;
           break;
@@ -121,7 +121,7 @@ void editName(coord_t x, coord_t y, char * name, uint8_t size, event_t event, ui
 #endif
           
           if (attr & ZCHAR) {
-#if defined(PCBTARANIS) && !defined(PCBXLITE)
+#if defined(PCBXLITE) || !defined(PCBTARANIS) || defined(PCBJUMPERT12)PCBXLITE
             if (v == 0) {
               s_editMode = 0;
               killEvents(event);
@@ -132,7 +132,7 @@ void editName(coord_t x, coord_t y, char * name, uint8_t size, event_t event, ui
             }
           }
           else {
-#if !defined(PCBXLITE)
+#if !defined(PCBXLITE) || !defined(PCBJUMPERT12)
             if (v == ' ') {
               s_editMode = 0;
               killEvents(event);
