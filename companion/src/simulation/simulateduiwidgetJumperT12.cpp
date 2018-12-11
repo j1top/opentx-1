@@ -15,12 +15,16 @@ SimulatedUIWidgetJumperT12::SimulatedUIWidgetJumperT12(SimulatorInterface *simul
   // add actions in order of appearance on the help menu
 
   QPoint ctr(70, 91);
+	
+	polygon.clear();
   polygon << polyArc(ctr.x(), ctr.y(), 50, -90, 90) << polyArc(ctr.x(), ctr.y(), 22, -90, 90);
   act = new RadioUiAction(3, QList<int>() << Qt::Key_PageUp << Qt::Key_Up, SIMU_STR_HLP_KEYS_GO_UP, SIMU_STR_HLP_ACT_PAGE);
   addRadioWidget(ui->leftbuttons->addArea(polygon, "JumperT12/left_page.png", act));
-
+	
+	polygon.clear();
+  polygon << polyArc(ctr.x(),ctr.y(),20);
   act = new RadioUiAction(0, QList<int>() << Qt::Key_PageDown << Qt::Key_Down, SIMU_STR_HLP_KEYS_GO_DN, SIMU_STR_HLP_ACT_MENU_ICN);
-  addRadioWidget(ui->leftbuttons->addArea(polyArc(ctr.x(), ctr.y(), 20), "JumperT12/left_menu.png", act));
+  addRadioWidget(ui->leftbuttons->addArea(polygon, "JumperT12/left_menu.png", act));
 
   polygon.clear();
   polygon << polyArc(ctr.x(), ctr.y(), 50, 90, 270) << polyArc(ctr.x(), ctr.y(), 22, 90, 270);
