@@ -215,6 +215,17 @@ void menuRadioSdManager(event_t _event)
       }
       break;
 #endif
+			
+#if defined(PCBJUMPERT12) // TODO NO_MENU_KEY
+    case EVT_KEY_LONG(KEY_MENU):
+      if (!READ_ONLY() && s_editMode == 0) {
+        killEvents(_event);
+        POPUP_MENU_ADD_ITEM(STR_SD_INFO);
+        POPUP_MENU_ADD_ITEM(STR_SD_FORMAT);
+        POPUP_MENU_START(onSdManagerMenu);
+      }
+      break;
+#endif
 
     case EVT_KEY_BREAK(KEY_EXIT):
       REFRESH_FILES();
@@ -243,6 +254,15 @@ void menuRadioSdManager(event_t _event)
 
     case EVT_KEY_LONG(KEY_ENTER):
 #if !defined(PCBX9) && !defined(PCBX7) // TODO NO_HEADER_LINE
+      if (menuVerticalPosition < HEADER_LINE) {
+        killEvents(_event);
+        POPUP_MENU_ADD_ITEM(STR_SD_INFO);
+        POPUP_MENU_ADD_ITEM(STR_SD_FORMAT);
+        POPUP_MENU_START(onSdManagerMenu);
+        break;
+      }
+#endif
+#if !defined(PCBJUMPERT12) // TODO NO_HEADER_LINE
       if (menuVerticalPosition < HEADER_LINE) {
         killEvents(_event);
         POPUP_MENU_ADD_ITEM(STR_SD_INFO);
