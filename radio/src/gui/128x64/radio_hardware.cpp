@@ -110,8 +110,13 @@ enum MenuRadioHardwareItems {
   ITEM_RADIO_HARDWARE_SC,
   ITEM_RADIO_HARDWARE_SD,
 #if NUM_SWITCHES > 4
+#if defined(PCBJUMPERT12)
+  ITEM_RADIO_HARDWARE_SG,
+  ITEM_RADIO_HARDWARE_SH,
+#else
   ITEM_RADIO_HARDWARE_SF,
   ITEM_RADIO_HARDWARE_SH,
+#endif
 #endif
   ITEM_RADIO_HARDWARE_SERIAL_BAUDRATE,
 #if defined(BLUETOOTH)
@@ -142,6 +147,8 @@ enum MenuRadioHardwareItems {
 #endif
 #if defined(PCBXLITE)
 #define SWITCH_TYPE_MAX(sw)            (SWITCH_3POS)
+#elif defined(PCBJUMPERT12)
+#define SWITCH_TYPE_MAX(sw)            (SWITCH_2POS)
 #else
 #define SWITCH_TYPE_MAX(sw)            ((MIXSRC_SF-MIXSRC_FIRST_SWITCH == sw || MIXSRC_SH-MIXSRC_FIRST_SWITCH == sw) ? SWITCH_2POS : SWITCH_3POS)
 #endif
@@ -207,8 +214,13 @@ void menuRadioHardware(event_t event)
       case ITEM_RADIO_HARDWARE_SC:
       case ITEM_RADIO_HARDWARE_SD:
 #if NUM_SWITCHES > 4
+    #if defined(PCBJUMPERT12)
+      case ITEM_RADIO_HARDWARE_SG:
+      case ITEM_RADIO_HARDWARE_SH:
+    #else
       case ITEM_RADIO_HARDWARE_SF:
       case ITEM_RADIO_HARDWARE_SH:
+    #endif
 #endif
       {
         int index = k-ITEM_RADIO_HARDWARE_SA;

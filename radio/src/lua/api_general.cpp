@@ -34,7 +34,7 @@
 #elif defined(PCBX7)
   #include "lua/lua_exports_x7.inc"
 #elif defined(PCBJUMPERT12)
-  #include "lua/lua_exports_x7.inc"
+  #include "lua/lua_exports_jumpert12.inc"
 #elif defined(PCBXLITE)
   #include "lua/lua_exports_xlite.inc"
 #elif defined(PCBTARANIS)
@@ -1348,15 +1348,15 @@ const luaR_value_entry opentxConstants[] = {
   { "MIXSRC_SB", MIXSRC_SB },
   { "MIXSRC_SC", MIXSRC_SC },
   { "MIXSRC_SD", MIXSRC_SD },
-#if !defined(PCBX7) && !defined(PCBXLITE)
+#if !defined(PCBX7) && !defined(PCBXLITE) && !defined(PCBJUMPERT12)
   { "MIXSRC_SE", MIXSRC_SE },
   { "MIXSRC_SG", MIXSRC_SG },
 #endif
-#if !defined(PCBJUMPERT12) && !defined(PCBXLITE)
-  { "MIXSRC_SE", MIXSRC_SE },
+#if defined(PCBJUMPERT12)
   { "MIXSRC_SG", MIXSRC_SG },
+	{ "MIXSRC_SH", MIXSRC_SH },
 #endif
-#if !defined(PCBXLITE)
+#if !defined(PCBXLITE) && !defined(PCBJUMPERT12)
   { "MIXSRC_SF", MIXSRC_SF },
   { "MIXSRC_SH", MIXSRC_SH },
 #endif
@@ -1435,7 +1435,27 @@ const luaR_value_entry opentxConstants[] = {
   { "FORCE", FORCE },
   { "ERASE", ERASE },
   { "ROUND", ROUND },
-#elif defined(PCBTARANIS)
+#elif defined(PCBJUMPERT12)
+  { "EVT_DOWN_FIRST", EVT_KEY_FIRST(KEY_DOWN) },
+  { "EVT_UP_FIRST", EVT_KEY_FIRST(KEY_UP) },
+  { "EVT_LEFT_FIRST", EVT_KEY_FIRST(KEY_LEFT) },
+  { "EVT_RIGHT_FIRST", EVT_KEY_FIRST(KEY_RIGHT) },
+  { "EVT_DOWN_BREAK", EVT_KEY_BREAK(KEY_DOWN) },
+  { "EVT_UP_BREAK", EVT_KEY_BREAK(KEY_UP) },
+  { "EVT_LEFT_BREAK", EVT_KEY_BREAK(KEY_LEFT) },
+  { "EVT_RIGHT_BREAK", EVT_KEY_BREAK(KEY_RIGHT) },
+  { "EVT_DOWN_LONG", EVT_KEY_LONG(KEY_DOWN) },
+  { "EVT_UP_LONG", EVT_KEY_LONG(KEY_UP) },
+  { "EVT_LEFT_LONG", EVT_KEY_LONG(KEY_LEFT) },
+  { "EVT_RIGHT_LONG", EVT_KEY_LONG(KEY_RIGHT) },
+  { "EVT_DOWN_REPT", EVT_KEY_REPT(KEY_DOWN) },
+  { "EVT_UP_REPT", EVT_KEY_REPT(KEY_UP) },
+  { "EVT_LEFT_REPT", EVT_KEY_REPT(KEY_LEFT) },
+  { "EVT_RIGHT_REPT", EVT_KEY_REPT(KEY_RIGHT) },
+  { "FORCE", FORCE },
+  { "ERASE", ERASE },
+  { "ROUND", ROUND },
+#elif (defined(PCBTARANIS) && !defined(PCBJUMPERT12))
   { "EVT_MENU_BREAK", EVT_KEY_BREAK(KEY_MENU) },
   { "EVT_MENU_LONG", EVT_KEY_LONG(KEY_MENU) },
   { "EVT_PAGE_BREAK", EVT_KEY_BREAK(KEY_PAGE) },
