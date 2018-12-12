@@ -59,7 +59,6 @@ void menuRadioDiagKeys(event_t event)
       }
 #elif defined(PCBJUMPERT12)
       y = MENU_HEADER_HEIGHT + FH*i;
-        // hide PLUS and MINUS virtual buttons
         lcdDrawTextAtIndex(0, y, STR_VKEYS, (TRM_BASE-1-i), 0);
         displayKeyState(5*FW+2, y, KEY_MENU+(TRM_BASE-1-i));
 #elif defined(PCBXLITE)
